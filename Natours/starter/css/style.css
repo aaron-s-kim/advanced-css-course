@@ -4,13 +4,11 @@
 *::before {
   margin: 0;
   padding: 0;
-  /* box-sizing property is not inherited by default */
   box-sizing: inherit;
-  /* force inheritance */ }
+  /* box-sizing property not inherited by default; forces inheritance */ }
 
 html {
-  /* Set root font-size */
-  /* Bad practice to set root to px b/c overrides user's default browser font-size setting */
+  /* Set root font-size; Bad practice to set root to px b/c overrides user's default browser font-size setting */
   font-size: 62.5%;
   /* Good practice to use 62.5% of browser default 16px = 10px */ }
 
@@ -18,7 +16,6 @@ body {
   /* font-related properties */
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  /* font-size: 16px; */
   line-height: 1.7;
   color: #777;
   padding: 3rem;
@@ -33,24 +30,21 @@ body {
   /* scales to cover container, crops img */
   background-position: top;
   position: relative;
-  /* clockwise direction */
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
-
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem; }
-
-.header__logo {
-  height: 3.5rem; }
-
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  /* center element by shifting x & y */
-  transform: translate(-50%, -50%);
-  text-align: center; }
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* clockwise direction */ }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* center element by shifting x & y */
+    text-align: center; }
 
 .heading-primary {
   color: #fff;
@@ -58,29 +52,27 @@ body {
   backface-visibility: hidden;
   /* used to fix shake during animation */
   margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    animation: moveInRight 1s ease-out; }
 
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
-  animation-name: moveInLeft;
-  animation-duration: 1s;
-  animation-timing-function: ease-out;
-  /*
-  animation-delay: 3s;
-  animation-iteration-count: 3;
-  */ }
-
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.75rem;
-  animation: moveInRight 1s ease-out; }
-
-/* entrance animation */
-/* for browser performance, best to only animate 2 different properties */
+/* Entrance animation */
+/* For browser performance, best to only animate 2 different properties */
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -109,8 +101,7 @@ body {
     opacity: 1;
     transform: translate(0); } }
 
-.btn:link,
-.btn:visited {
+.btn:link, .btn:visited {
   text-transform: uppercase;
   text-decoration: none;
   padding: 1.5rem 4rem;
@@ -125,6 +116,9 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
   /* offset-x | offset-y | blur-radius | color */ }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
 
 .btn:active {
   transform: translateY(-1px);
@@ -134,8 +128,9 @@ body {
 .btn--white {
   background-color: #fff;
   color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
 
-/* after pseudo-element treated as child of parent */
 .btn::after {
   content: "";
   display: inline-block;
@@ -147,13 +142,6 @@ body {
   left: 0;
   z-index: -1;
   transition: all .4s; }
-
-.btn--white::after {
-  background-color: #fff; }
-
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.6);
-  opacity: 0; }
 
 .btn--animated {
   animation: moveInBottom .5s ease-out .75s;
