@@ -8,6 +8,7 @@
   background-size: cover; /* scales to cover container, crops img */
   background-position: top;
   position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* clockwise direction */
 
   &__logo-box {
