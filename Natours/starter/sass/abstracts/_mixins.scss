@@ -1,0 +1,7 @@
+@mixin clearfix {
+  &::after {
+    content: ""; /* always need to specify content otherwise pseudoelement will not appear on page */
+    display: table;
+    clear: both;
+  }
+}
